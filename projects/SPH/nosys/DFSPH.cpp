@@ -1,17 +1,38 @@
 #include <iostream>
 #include <zeno/zeno.h>
 #include <zeno/types/PrimitiveObject.h>
+
 #include "SPlisHSPlasH/DFSPH/TimeStepDFSPH.h"
+#include "SPlisHSPlasH/Common.h"
+#include "Simulator/SimulatorBase.h"
+#include "Simulator/GUI/OpenGL/Simulator_OpenGL.h"
+#include "PositionBasedDynamicsWrapper/PBDBoundarySimulator.h"
+
+using namespace SPH;
+using namespace std;
+
+SimulatorBase *base = nullptr;
+Simulator_GUI_Base *gui = nullptr;
+
 namespace zeno
 {
 struct DFSPH : INode
 {
+    
     virtual void apply() override
     {
         std::cout<<"DFSPH!!!!!!!!!!!!!!!!!!!!!!!!"<<std::endl;
         std::cout<<"DFSPH!!!!!!!!!!!!!!!!!!!!!!!!"<<std::endl;
         std::cout<<"DFSPH!!!!!!!!!!!!!!!!!!!!!!!!"<<std::endl;
         std::cout<<"DFSPH!!!!!!!!!!!!!!!!!!!!!!!!"<<std::endl;
+
+        base = new SimulatorBase();
+        int argc = 1;
+        const char** argv = "SPlisHSPlasH";
+        base->init(argc, argv, "SPlisHSPlasH");
+        base->run();
+
+        delete base;
     }
 };
     

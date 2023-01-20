@@ -1,11 +1,15 @@
 option(USE_legacyPBD "Build the legacyPBD" ON)
 if(USE_legacyPBD)
-    message("Building legacyPBD")
+    message(STATUS "Building legacyPBD")
     add_subdirectory(legacyPBD)
 endif()
 
 option(USE_zenoPBD "Build the new zenoPBD" ON)
 if(USE_zenoPBD)
-    message("Building new zenoPBD")
+    message(STATUS "Building new zenoPBD")
     add_subdirectory(zenoPBD)
+endif()
+
+if(USE_PBD AND USE_zenoPBD AND USE_SPH)
+    message(FATAL_ERROR "Now the SPH and zenoPBD are mutually exclusive, please choose one of them.")
 endif()

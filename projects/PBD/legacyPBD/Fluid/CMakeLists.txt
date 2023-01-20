@@ -18,8 +18,3 @@ PBF_BVH.h
 )
 
 target_include_directories(zeno PRIVATE ${PROJECT_SOURCE_DIR})
-
-if(NOT ZENO_WITH_ZenoFX)
-  message(FATAL_ERROR "ZenoFX must be ON when PBD is ON! "
-    "Please specify: -DZENO_WITH_ZenoFX:BOOL=ON")
-endif()
